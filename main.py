@@ -16,12 +16,19 @@ def main():
 
 
 
+    
+
+
+
 
 xe = ut.load_data_csv("games.csv")
 
 
 x = xe.drop(['gameId','winner', 'seasonId'], axis=1)
 y = xe.winner
+y = y.replace(1,0)
+y = y.replace(2,1)
+
 
 x = (x - np.min(x)) / (np.max(x) - np.min(x))
 
@@ -32,21 +39,42 @@ ut.save_data_csv(x_train, x_test, y_train,  y_test)
 
 print(x_train.shape[1])
 
-nn = NeuralNetwork([x_train.shape[1],x_train.shape[1]*2 + 1,1])
+nn = NeuralNetwork([x_train.shape[1],1 + 1,1])
 
 
 
 
-nn.fit(np.array(x_train), np.array(y_train), learning_rate=0.003,epochs=20001)
+nn.fit(np.array(x_train), np.array(y_train), learning_rate=0.003,epochs=200001)
  
 index=0
 
 
 
 
-nn.print_weights()
-for e in np.array(x_test):
-# # # #     # print(e)
-    nn.predict(e)
+#nn.print_weights()
+index=0
+predicciones = nn.predict(np.array(x_test))
+
+# for e in np.array(x_test):
+    
+#     #print("\nPartida: ", index+1, "\nGanador: Equipo ", 1+int(np.round(nn.predict(e))))
+# # # # #     # print(e)
+#     #print(nn.predict(e))
+#     predicciones.append(nn.predict(e))
+
+#     index=index+1
 # # # #     index=index+1
 
+print(predicciones)
+
+from sklearn.metrics import precision_recall_fscore_support as score
+
+
+
+precision, recall, fscore, support = score(np.array(y_test), predicciones)
+
+print('precision: {}',precision)
+print('recall: {}'.format(recall))
+print('fscore: {}'.format(fscore))
+print('support: {}'.format(support))
+    

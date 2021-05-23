@@ -37,6 +37,7 @@ class NeuralNetwork:
     def fit(self, X, y, learning_rate=0.2, epochs=100000):
         # Agrego columna de unos a las entradas X
         # Con esto agregamos la unidad de Bias a la capa de entrada
+        #NI IDEA QUE ES UN BIAS, PERO SIN ESTO NO FUNCIONA
         ones = np.atleast_2d(np.ones(X.shape[0]))
         X = np.concatenate((ones.T, X), axis=1)
         
@@ -80,19 +81,19 @@ class NeuralNetwork:
         
         
         ones = np.atleast_2d(np.ones(x.shape[0]))
-        a = np.concatenate((np.ones(1).T, np.array(x)), axis=0)
-        print(len(self.weights))
+        a = np.concatenate((ones.T, x), axis=1)
+        #print(len(self.weights))
         for l in range(0, len(self.weights)):
             # print(self.weights[l])
             #print("AAAA: ", sigmoid(np.dot(a, self.weights[l])))
             a = sigmoid(np.dot(a, self.weights[l]))
-        return a
+        return np.rint(a)
 
     def print_weights(self):
         print("LISTADO PESOS DE CONEXIONES")
         print((len(self.weights)))
         for i in range(len(self.weights)):
-            print((len(self.weights[i])))
+            
             print(self.weights[i])
 
     def get_deltas(self):
