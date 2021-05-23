@@ -1,7 +1,11 @@
 import numpy as np
+np.warnings.filterwarnings('ignore', 'overflow')
 
 def sigmoid(x):
-    return 1.0/(1.0 + np.exp(-x))
+    sig = 1 / (1 + np.exp(-x))     # Define sigmoid function
+    sig = np.minimum(sig, 0.9999)  # Set upper bound
+    sig = np.maximum(sig, 0.0001)  # Set lower bound
+    return sig
 
 def sigmoid_derivada(x):
     return sigmoid(x)*(1.0-sigmoid(x))
@@ -74,16 +78,21 @@ class NeuralNetwork:
 
     def predict(self, x): 
         
-        print(x.shape)
+        
+        ones = np.atleast_2d(np.ones(x.shape[0]))
+        a = np.concatenate((np.ones(1).T, np.array(x)), axis=0)
         print(len(self.weights))
         for l in range(0, len(self.weights)):
-            x = sigmoid(np.dot(x, self.weights[l]))
-        return x
+            # print(self.weights[l])
+            #print("AAAA: ", sigmoid(np.dot(a, self.weights[l])))
+            a = sigmoid(np.dot(a, self.weights[l]))
+        return a
 
     def print_weights(self):
         print("LISTADO PESOS DE CONEXIONES")
-
+        print((len(self.weights)))
         for i in range(len(self.weights)):
+            print((len(self.weights[i])))
             print(self.weights[i])
 
     def get_deltas(self):
