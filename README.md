@@ -1,6 +1,7 @@
-# Desafio 3 - Manejo de Datos Espaciales
+# Desafío 3 - Redes neuronales para predicciones
 
-Bienvenido a Desafio 3. Este programa busca encontrar aplicaciones similares a partir de datos de entrada, utilizando KD Tree.
+
+Bienvenido a Desafio 4. Este programa busca encontrar predecir el ganador de diversas partidas de League of Legends usando datos de estos y usandalas en una red de neuronal con backpropagation. 
 
 <br></br>
 
@@ -9,8 +10,9 @@ Bienvenido a Desafio 3. Este programa busca encontrar aplicaciones similares a p
 Para utilizar nuestro programa, se necesita Python 3+, y los siguientes packetes.
 * Numpy (pip install numpy)
 * Pandas (pip install pandas)
+* sklearn (pip install scikit-learn)
 
-Además de contener el archivo "Desafio3.csv" en la raíz.
+Además de contener el archivo "games.csv" en la raíz, el cual conteine los datos de las partidas.
 
 Para correr la aplicación, simplemente correr el comando `python main.py`
 
