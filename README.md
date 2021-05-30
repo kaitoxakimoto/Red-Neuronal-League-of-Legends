@@ -49,9 +49,9 @@ Respecto a la carga de datos antes del procedimiento mismo, se carga el archivo 
 
 ### _1 - Datos de entrada y de salida._
 
-Luego de la carga del csv, se separó el archivo en las entradas y las clases de salidas, nombrandolas x e y respectivamente. Para las entradas, no se consideración los datos de ID de la partida y el numero de la temporada, puesto que el primero es irrelevante y el segundo siempre es 9 en la base de datos. Y respecto a las clases de salida, se utilizó la columna "Winner" que indica el equipo ganador, Equipo 1 o Equipo 2, donde en se renombraron 0 y 1 para su futuro uso en la función activación.
+Luego de la carga del csv, se separó el archivo en las entradas y las clases de salidas, nombrandolas X e Y respectivamente. Para las entradas, no se consideración los datos de ID de la partida y el numero de la temporada, puesto que el primero es irrelevante y el segundo siempre es 9 en la base de datos. Y respecto a las clases de salida, se utilizó la columna "Winner" que indica el equipo ganador, Equipo 1 o Equipo 2, donde en se renombraron 0 y 1 para su futuro uso en la función activación.
 
-dd
+Luego, estos fueron normalizados usando min-max, y finalmente X e Y fueron distribuidos de forma random en variables de train y test, el primero con 70% y el otro con 30%. 
 
 
 
