@@ -7,16 +7,7 @@ from nerualNetwork import *
 import numpy as np
 import pandas as pd
 
-def main():
-    par_sae, par_sft = ut.load_config()
-    xe = ut.load_data_csv("games.csv")
-    W, Xr = train(xe, par_sae)
-    #Ws, cost = train_softmax(Xr, ye, par_sft)
-    ut.save_w_dl(W, "w_dl.npz", "cost_sofmax.csv")
 
-
-
-    
 
 
 
@@ -39,12 +30,12 @@ ut.save_data_csv(x_train, x_test, y_train,  y_test)
 
 print(x_train.shape[1])
 
-nn = NeuralNetwork([x_train.shape[1],1 + 1,1])
+nn = NeuralNetwork([x_train.shape[1],x_train.shape[1]*2 + 1, int(x_train.shape[1]/2) + 1, x_train.shape[1]+1,1])
 
 
 
 
-nn.fit(np.array(x_train), np.array(y_train), learning_rate=0.003,epochs=200001)
+nn.train(np.array(x_train), np.array(y_train), learning_rate=0.0003,epochs=2000001)
  
 index=0
 
