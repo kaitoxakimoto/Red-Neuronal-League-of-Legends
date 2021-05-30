@@ -55,7 +55,7 @@ Luego de la carga del csv, se separó el archivo en las entradas y las clases de
 
 
 <p align="center">
-  <img  src="https://i.imgur.com/idD3vl9.png">
+  <img  src="https://i.imgur.com/idD3vl9.png?1">
 </p>
 
 <p align="center">
