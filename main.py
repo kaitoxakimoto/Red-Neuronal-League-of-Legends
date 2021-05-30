@@ -42,7 +42,7 @@ index=0
 
 
 
-#nn.print_weights()
+#nn.print_weights()#
 index=0
 predicciones = nn.predict(np.array(x_test))
 
