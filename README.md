@@ -64,44 +64,84 @@ Luego, estos fueron normalizados usando min-max, y finalmente X e Y fueron distr
   Fig 1 Interpretación de datos.
 </p>
 
-Para la aplicación del algoritmo k nearest se implemento la solución propuesta en clase con los respectivos cambios que la harán compatible con python.
 
+
+
+### _2 - Estructura de la red neuronal._
+
+Para la red neuronal, se creo una clase llamada "Neural Network". Para su construcción, este recibe un array con numeros correspondientes a las capas de la red, el primero siendo las capas de entrada, el ultimo la capa de salidas, y las restante de enmedio las capas ocultas.
 
 <p align="center">
-  <img  src="https://i.imgur.com/3uUdqJ3.png">
+  <img  src="https://i.imgur.com/CwLO82m.png">
 </p>
 
 <p align="center">
-  Fig 2.2 Mas cercanos en Python.
+  Fig 2 Estructura de la red.
 </p>
 
-En este sector del código observamos que primero se crean las estructuras explicitadas en el pseudocódigo, siendo “vecinos” equivalente a k nearest, “nodos visitados” siendo “nodos explorados”, y la pila S siendo idéntica.
+La estructura usada por el equipo fue [n, n*2 + 1, n/2 + 1, 1]. Donde n es el numero de datos de entrada, en este caso 58, la primera capa oculta el doble de la entrada + 1, la siguiente la mitad de estas + 1, y finalmente la capa de salida, la cual contiene la clase que indica cual equipo fue ganador.
 
-Luego se procede a realizar la “inserción” del nodo para buscar el punto de inicio de la búsqueda.
+
 
 
 <p align="center">
-  <img  src="https://i.imgur.com/uDHGYhA.png">
+  <img  src="https://upload.wikimedia.org/wikipedia/commons/6/64/RedNeuronalArtificial.png">
 </p>
 
 <p align="center">
-  Fig 2.3 Pop en la pila no vacia.
+  Fig 3 Red neuronal.
 </p>
 
-En este sector del codigo observamos la equivalencia a hacer s.pop mientras la pila no este vacía, y se chequea la condición para saber si debería ingresarse a la lista final. Un detalle de la implementación es que los primeros 10 datos observados se ingresan obligatoriamente, y son los datos posteriores los que analizar la distancia propiamente tal.
+Un ejemplo parecido es la imagen anterior, donde n es 58, m es n*2 + 1 y la unica capa de salida.
+
+Siguiente, se iniciaron los pesos de las capas, asignandoles valores entre -1 y 1.
+
+
+
+### _2 - Proceso de training._
+
+Para el proceso de training, este recibe los sigueintes parametros, los datos de la capa de entrada (X), los datos de los valores esperados de la clase (Y), la tasa de aprendizaje y la cantidad de interaciones. Si no se indican las ultimas dos, estos son 2% y 100000.
+
+Luego, se agrega un array de 1 como bias, y por cada iteración se realiza el producto punto entre un dato random de la entrada y los pesos ocultos, los cuales pasan la función de activación, que en este caso, usamos sigmoid. Este dato, es una predicción con la cual se compara con el valor esperado para calcular el error. 
+
+
+Siguiente, comieza el calculo de los deltas, el cual comienza desde la segunda capa hasta la ultima.
 
 
 <p align="center">
-  <img  src="https://i.imgur.com/WY2VBp6.png">
+  <img  src="https://i.imgur.com/NTZBe9z.png">
 </p>
 
 <p align="center">
-  Fig 2.4 Comparación de sub-arboles.
+  Fig 4 Training.
 </p>
 
-Para terminar, el algoritmo realiza la comparación de los sub-arboles derechos e izquierdo para ver si en ellos podrían haber más candidatos. para esto se comparan la distancia del último elemento que es candidato a mejor con la distancia en la dimensión actual a la línea de separación, de poder existir un candidato ahí se vuelve a realizar la inserción del dato a este subárbol y consecuentemente al ingresarse a la pila S, se explora. 
+A continuación, se invierten los deltas y se realiza el paso de backpropagation, en donde se actualizan las capas y deltas, y mas importante, los pesos, donde estos se suman a la gradiente multiplicado por la tasa de aprendizaje, distribuyendose por toda la red, en cada una de las iteraciones, acercandose cada vez mas los valores esperados.
 
 
+
+<p align="center">
+  <img  src="https://i.imgur.com/2rmRrRn.png">
+</p>
+
+<p align="center">
+  Fig 5 Actualización de la red y sus pesos.
+</p>
+
+
+### _3 - Predicción_
+
+Una vez realizado el proceso de training, ya se tienen los pesos ocultos entrenados para realizar las prediciones. Para esto, la función recibe los datos de test de las entradas. Para el calculo de las estimaciones, se realiza el producto punto de las entradas por todos los pesos ocultos, aplicandose su función de activación. 
+Debido a que estas predicciones no tienen un valor fijo entre 0 y 1 como los datos esperados, sino numeros decimales muy cercanos a estos, los datos fueron redondeados a int, quedando así como 0 y 1 para el calculo de la metrica de precisión.
+
+
+<p align="center">
+  <img  src="https://i.imgur.com/63DkmbM.png">
+</p>
+
+<p align="center">
+  Fig 5 Actualización de la red y sus pesos.
+</p>
 
 
 <br></br>
