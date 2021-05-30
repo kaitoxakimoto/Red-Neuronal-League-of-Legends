@@ -98,7 +98,7 @@ Siguiente, se iniciaron los pesos de las capas, asignandoles valores entre -1 y 
 
 
 
-### _2 - Proceso de training._
+### _3 - Proceso de training._
 
 Para el proceso de training, este recibe los sigueintes parametros, los datos de la capa de entrada (X), los datos de los valores esperados de la clase (Y), la tasa de aprendizaje y la cantidad de interaciones. Si no se indican las ultimas dos, estos son 2% y 100000.
 
@@ -129,7 +129,7 @@ A continuación, se invierten los deltas y se realiza el paso de backpropagation
 </p>
 
 
-### _3 - Predicción_
+### _4 - Predicción_
 
 Una vez realizado el proceso de training, ya se tienen los pesos ocultos entrenados para realizar las prediciones. Para esto, la función recibe los datos de test de las entradas. Para el calculo de las estimaciones, se realiza el producto punto de las entradas por todos los pesos ocultos, aplicandose su función de activación. 
 Debido a que estas predicciones no tienen un valor fijo entre 0 y 1 como los datos esperados, sino numeros decimales muy cercanos a estos, los datos fueron redondeados a int, quedando así como 0 y 1 para el calculo de la metrica de precisión.
