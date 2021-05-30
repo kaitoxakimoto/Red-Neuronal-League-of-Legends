@@ -51,6 +51,8 @@ Respecto a la carga de datos antes del procedimiento mismo, se carga el archivo 
 
 Luego de la carga del csv, se separó el archivo en las entradas y las clases de salidas, nombrandolas x e y respectivamente. Para las entradas, no se consideración los datos de ID de la partida y el numero de la temporada, puesto que el primero es irrelevante y el segundo siempre es 9 en la base de datos. Y respecto a las clases de salida, se utilizó la columna "Winner" que indica el equipo ganador, Equipo 1 o Equipo 2, donde en se renombraron 0 y 1 para su futuro uso en la función activación.
 
+dd
+
 
 
 
