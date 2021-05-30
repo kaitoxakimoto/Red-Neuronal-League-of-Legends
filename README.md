@@ -1,4 +1,4 @@
-# Desafío 3 - Redes neuronales para predicciones
+# Desafío 4 - Redes neuronales para predicciones
 
 
 Bienvenido a Desafio 4. Este programa busca encontrar predecir el ganador de diversas partidas de League of Legends usando datos de estos y usandalas en una red de neuronal con backpropagation. 
