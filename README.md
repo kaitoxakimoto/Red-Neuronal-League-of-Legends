@@ -22,7 +22,7 @@ Para correr la aplicación, simplemente correr el comando `python main.py`
 
 
 <p align="center">
-  <img  src="https://i.imgur.com/TLyW9UT.png">
+  <img  src="https://i.imgur.com/FOCjLFY.png">
   
 </p>
 <p align="center">
@@ -30,84 +30,36 @@ Para correr la aplicación, simplemente correr el comando `python main.py`
 </p>
 
 
-Luego, mostrará la interfaz, en donde hay 4 opciones, para usarlas, el usuario debe ingresar el digito correspondiente. Estas seran explicadas a continuación.
-
-
-### _1 - Mostrar información de una aplicación específica_
-
-Para buscar una aplicación según nombre o ID, ingrese este luego de confirmar la opción. Este retornará el juego en cuestión con todos sus datos.
-<p align="center">
-  <img  src="https://i.imgur.com/2GBT4g9.png">
-</p>
-
-<p align="center">
-  Fig 1.2 Busqueda de la aplicación mediante ID.
-</p>
-
-<p align="center">
-  <img  src="https://i.imgur.com/U4g7qtC.png">
-</p>
-
-<p align="center">
-  Fig 1.3 Busqueda de la aplicación mediante Nombre.
-</p>
-
-
-
-### _2 - Mostrar información de las 10 aplicaciones más parecidas a una aplicación dada_
-
-Para buscar las 10 aplicaciones más parecidas a una aplicación dada, ingrese el ID luego de confirmar la opción. Este retornará las 10 aplicaciones de mas cercanas, desde el mas cercano al mas lejano, con su nombre e ID.
-
-<p align="center">
-  <img  src="https://i.imgur.com/JSFyrLe.png">
-</p>
-
-<p align="center">
-  Fig 1.4 Busqueda de las 10 aplicaciones mas cercanas mediante un ID.
-</p>
-
-
-
-### _3 - Mostrar información de las 10 aplicaciones más parecidas a vector de atributos_
-
-
-Para buscar las 10 aplicaciones más parecidas a una aplicación dada, los atributos del vector deben ser entregados luego de confirmar la opción, de la siguiente manera.
-
-<p align="center">
-  <img  src="https://cdn.discordapp.com/attachments/825467667955712031/842217743654191134/unknown.png">
-</p>
-
-<p align="center">
-  Fig 1.5 Busqueda de las 10 aplicaciones mas cercanas según un vector de atributos.
-</p>
-
-### _0 - Salir de la aplicación_
-
-Para salir de la aplicación, simplemente ingrese 0 en la terminal.
+Luego, este imprimirá cada 10000 iteraciones donde esta ejecutandose en el proceso de train, siguiente realizando la fase test, imprimiendo el ganador de cada partida de la predicción, finalmente mostrando la precisión final de estas.
 
 
 
 
 ## _Descripción del problema_
 
-Manuel está interesado en el mercado del desarrollo móvil, por lo que comenzó a recopilar toda la información de las aplicaciones más descargadas de una tienda. Manuel le pide a su equipo (uds.) que le hagan un programa que, a partir de los datos recopilados, obtenga información de aplicaciones similares a las que se encuentra desarrollando.
-
-Nuestra solución al desafío 3 modela el problema con KD Tree, con los datos de las aplicaciones en sus nodos. Con esto, evitamos una comparación exhaustiva de 1 con otros 7000 elementos, reduciendo drasticamente el rendimiento y los tiempos de ejecución. Con esto, se implementaron las funcionalidades requeridas por el desafio:
-* Mostrar información de una aplicación específica con un ID o Nombre
-* Mostrar información de las 10 aplicaciones más parecidas a una aplicación a traves de un ID o dado una serie de atributos en un vector (price, size_bytes, prime_genre, …)
+El problema a resolver, es la predicción de partidas de League of Legends usando redes neuronales, entrenando los pesos con una base de datos de partidas, que contiene información tales como campeones, primera sangre, duración del juego y mas.
+  
 
 <br></br>
 
 ## _Descripción del algoritmo_
 
+Respecto a la carga de datos antes del procedimiento mismo, se carga el archivo "games.csv". La interpretación de estos datos se detallará a continuación:
+
+
+### _1 - Datos de entrada y de salida._
+
+Luego de la carga del csv, se separó el archivo en las entradas y las clases de salidas, nombrandolas x e y respectivamente. Para las entradas, no se consideración los datos de ID de la partida y el numero de la temporada, puesto que el primero es irrelevante y el segundo siempre es 9 en la base de datos. Y respecto a las clases de salida, se utilizó la columna "Winner" que indica el equipo ganador, Equipo 1 o Equipo 2, donde en se renombraron 0 y 1 para su futuro uso en la función activación.
+
+
 
 
 <p align="center">
-  <img  src="https://i.imgur.com/1IhGb9i.png">
+  <img  src="https://i.imgur.com/idD3vl9.png">
 </p>
 
 <p align="center">
-  Fig 2.1 Pseudo codigo Vecinos mas cercanos.
+  Fig 1 Interpretación de datos.
 </p>
 
 Para la aplicación del algoritmo k nearest se implemento la solución propuesta en clase con los respectivos cambios que la harán compatible con python.
