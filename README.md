@@ -109,7 +109,7 @@ Siguiente, comieza el calculo de los deltas, el cual comienza desde la segunda c
 
 
 <p align="center">
-  <img  src="https://i.imgur.com/NTZBe9z.png">
+  <img  src="https://i.imgur.com/hExhC1B.png">
 </p>
 
 <p align="center">
