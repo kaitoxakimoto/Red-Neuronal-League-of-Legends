@@ -151,9 +151,9 @@ Debido a que estas predicciones no tienen un valor fijo entre 0 y 1 como los dat
 
 [Presentación en YouTube.](https://www.youtube.com/watch?v=UwikvGJ8IwQ)
 
-[![Desafío 3:
-Manejo de datos espaciales
-](https://i.imgur.com/sgLmpYo.png)](https://www.youtube.com/watch?v=UwikvGJ8IwQ "Desafío 3:
-Manejo de datos espaciales
+[![Desafío 4:
+Redes neuronales para predicciones
+](https://i.imgur.com/sgLmpYo.png)](https://www.youtube.com/watch?v=UwikvGJ8IwQ "Desafío 4:
+Redes neuronales para predicciones
 ")
 
