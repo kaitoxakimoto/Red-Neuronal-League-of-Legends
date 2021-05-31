@@ -5,7 +5,7 @@ import utility as ut
 from sklearn.model_selection import train_test_split ##solo usamos sklearn para repartir los datos
 from nerualNetwork import *
 import numpy as np
-import pandas as pd
+import time
 
 
 
@@ -32,11 +32,14 @@ print(x_train.shape[1])
 
 nn = NeuralNetwork([x_train.shape[1],x_train.shape[1]*2 + 1, int(x_train.shape[1]/2) + 1, x_train.shape[1]+1,1])
 
+iteraciones = 10000000
 
-
-
-nn.train(np.array(x_train), np.array(y_train), learning_rate=0.0003,epochs=2000001)
+start_time = time.time()
+nn.train(np.array(x_train), np.array(y_train), learning_rate=0.03,epochs=iteraciones)
  
+
+print("Tiempo training: %s segundos ---" % (time.time() - start_time))
+
 index=0
 
 
@@ -44,6 +47,9 @@ index=0
 
 #nn.print_weights()#
 index=0
+
+start_time = time.time()
+
 predicciones = nn.predict(np.array(x_test))
 
 # for e in np.array(x_test):
@@ -56,16 +62,25 @@ predicciones = nn.predict(np.array(x_test))
 #     index=index+1
 # # # #     index=index+1
 
-print(predicciones)
+# print(predicciones)
 
-from sklearn.metrics import precision_recall_fscore_support as score
+# from sklearn.metrics import precision_recall_fscore_support as score
 
 
 
-precision, recall, fscore, support = score(np.array(y_test), predicciones)
+# precision, recall, fscore, support = score(np.array(y_test), predicciones)
 
-print('precision: {}',precision)
-print('recall: {}'.format(recall))
-print('fscore: {}'.format(fscore))
-print('support: {}'.format(support))
-    
+# print('precision: {}',precision)
+# print('recall: {}'.format(recall))
+# print('fscore: {}'.format(fscore))
+# print('support: {}'.format(support))
+
+predictCount=0
+
+for i in range(len(predicciones)):
+    if predicciones[i]==np.array(y_test)[i]:
+        predictCount=predictCount+1
+
+
+print("Tiempo testing: %s segundos ---" % (time.time() - start_time))  
+print("Con un total de ", iteraciones," iteraciones, la precisión total es: ", predictCount/len(predicciones) * 100, "%" )

@@ -37,7 +37,7 @@ class NeuralNetwork:
     def train(self, X, y, learning_rate=0.2, epochs=100000):
         
         # Se le agrega el bias a la capa de entrada
-        #NI IDEA QUE ES UN BIAS, PERO SIN ESTO NO FUNCIONA
+        
         ones = np.atleast_2d(np.ones(X.shape[0]))
         #print(ones)
         X = np.concatenate((ones.T, X), axis=1)
