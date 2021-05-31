@@ -168,11 +168,11 @@ Debido a que estas predicciones no tienen un valor fijo entre 0 y 1 como los dat
 
 ## _Presentación en video_
 
-[Presentación en YouTube.](https://youtu.be/yUtvO6JW0jM)
+[Presentación en YouTube.](https://www.youtube.com/watch?v=UwikvGJ8IwQ)
 
 [![Desafío 3:
 Manejo de datos espaciales
-](https://i.imgur.com/16S684v.png)](https://youtu.be/yUtvO6JW0jM "Desafío 3:
+](https://i.imgur.com/sgLmpYo.png)](https://www.youtube.com/watch?v=UwikvGJ8IwQ "Desafío 3:
 Manejo de datos espaciales
 ")
 Copied
